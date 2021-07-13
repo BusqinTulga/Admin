@@ -1,0 +1,28 @@
+server:
+  #端口
+  port: 80
+
+spring:
+  #数据库
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/admin
+    username: root
+    password: tuliga123
+  web:
+    resources:
+      #静态资源路径
+      static-locations: classpath:/META-INF/resources/, classpath:/static/, classpath:/templates/,
+                        file:D:/
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    #数据库下划线改驼峰命名
+    map-underscore-to-camel-case: true
+    #在控制台打印SQL语句
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#自定义地址
+location:
+  files: D:/root/upload/information online translation

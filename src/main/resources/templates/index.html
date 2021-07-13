@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/element-plus/lib/theme-chalk/index.css">
+
+    <script src="/js/vue/vue.global.js"></script>
+    <script src="/js/vue-router/vue-router.global.js"></script>
+    <script src="https://unpkg.com/element-plus/lib/index.full.js"></script>
+</head>
+
+<body>
+<div id="body">
+    <button onclick="vue.methods.click()">按钮</button>
+</div>
+</body>
+
+<script>
+    // 可以从其他文件 import 进来
+    const Home = { template: '<div>Home</div>' }
+    const About = { template: '<div>About</div>' }
+
+    // 2. 定义路由
+    // 每个路由应该映射一个组件。
+    const routes = [
+        { path: '/', component: Home },
+        { path: '/about', component: About },
+    ]
+
+    // 3. 创建 router 实例，然后传 `routes` 配置
+    // 你还可以传别的配置参数, 不过先这么简单着吧。
+    const router = VueRouter.createRouter({
+        // 4. 通过 createWebHashHistory() 创建 hash 模式。
+        history: VueRouter.createWebHashHistory(),
+        routes, // (缩写) 相当于 routes: routes
+    });
+
+    var vue = {
+        data() {
+            return {
+                haha: 123,
+                a: ''
+            }
+        },
+        created: function () {
+
+        },
+        methods: {
+            click: function () {
+                alert(this.$route.query);
+            }
+        }
+    }
+
+    Vue.createApp(vue).use(router).mount('#body');
+</script>
+</html>
